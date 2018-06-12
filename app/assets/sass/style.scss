@@ -1,0 +1,26 @@
+/**
+* The main css file,
+* it should only import partials and
+* never include any code
+ */
+
+/*
+ * Base Styling
+*/
+@import "base/colors";
+@import "base/common";
+@import "base/fonts";
+@import "base/grid";
+@import "base/typography";
+
+/*
+ * Components Styling
+*/
+@import "components/index-page";
+
+/*
+ * Mixins
+*/
+
+/* Use this file for hotfixes and refactor later */
+@import "shame";

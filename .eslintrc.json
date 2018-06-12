@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:react/recommended"
+    ],
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "always",
+      "afterOpening": "never",
+      "beforeClosing": "never"
+    }]
+  }
+}
