@@ -13,6 +13,7 @@
       "beforeSelfClosing": "always",
       "afterOpening": "never",
       "beforeClosing": "never"
-    }]
+    }],
+    "semi": ["error", "never"]
   }
 }
