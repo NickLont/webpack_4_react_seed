@@ -8,14 +8,14 @@
     "start": "webpack --mode=development && webpack-dev-server --mode=development --open --hot --color",
     "build": "webpack --mode=production --progress",
     "build:stats": "webpack --config=webpack.stats.config.js --env --mode=production --progress --profile",
-    "lint": "lint-staged"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": ["eslint --fix", "git add"]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run precommit"
     }
   },
   "keywords": [
