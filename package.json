@@ -5,16 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development && webpack-dev-server --mode=development --open --hot --color --watch",
+    "start":
+      "webpack --mode=development && webpack-dev-server --mode=development --open --hot --color --watch",
     "build": "webpack --mode=production --progress",
-    "build:stats": "webpack --config=webpack.stats.config.js --env --mode=production --progress --profile",
+    "build:stats":
+      "webpack --config=webpack.stats.config.js --env --mode=production --progress --profile",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier-standard",
-      "git add"
-    ],
+    "*.{js,jsx,json}": ["prettier-standard", "git add"],
     "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged", "git add"]
   },
   "husky": {
@@ -22,18 +21,11 @@
       "pre-commit": "npm run precommit"
     }
   },
-  "keywords": [
-    "react",
-    "seed"
-  ],
+  "keywords": ["react", "seed"],
   "author": "Nick Lontorfos",
   "license": "ISC",
   "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ]
+    "presets": ["es2015", "react", "stage-0"]
   },
   "dependencies": {
     "react": "^16.4.0",
