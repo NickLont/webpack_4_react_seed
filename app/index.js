@@ -1,18 +1,11 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import "./assets/sass/style.scss"
+import "assets/sass/style.scss"
+import Homepage from "containers/pages/homepage"
 
 class App extends Component {
   render() {
-    return (
-      <p className="index-page__title">
-        React index page
-        <img
-          src="./assets/images/beach-exotic-holiday-248797.jpg"
-          alt="testImg"
-        />
-      </p>
-    )
+    return <Homepage />
   }
 }
 

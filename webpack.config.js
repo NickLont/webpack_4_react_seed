@@ -1,32 +1,54 @@
-const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const htmlPlugin = new HtmlWebPackPlugin({
-  template: path.resolve(__dirname, 'app/index.html'), // Location of source index.html
-  filename: 'index.html' // Name of produced index.html
+const path = require("path")
+const htmlWebPackPlugin = require("html-webpack-plugin")
+const htmlPlugin = new htmlWebPackPlugin({
+  template: path.resolve(__dirname, "app/index.html"), // Location of source index.html
+  filename: "index.html" // Name of produced index.html
 })
+const copyWebpackPlugin = require("copy-webpack-plugin")
+const copyPlugin = new copyWebpackPlugin(
+  [
+    {
+      from: path.resolve(__dirname, "app/assets/images/"),
+      to: path.resolve(__dirname, "dist/assets/images/")
+    },
+    {
+      from: path.resolve(__dirname, "app/assets/fonts"),
+      to: path.resolve(__dirname, "dist/assets/fonts")
+    },
+    {
+      from: path.resolve(__dirname, "app/assets/various"),
+      to: path.resolve(__dirname, "dist/assets/various")
+    }
+  ],
+  {}
+) // Manual copy of assets to avoid importing in evey component (not optimal for Webpack)
 
 module.exports = {
-  entry: path.resolve(__dirname, 'app'),
+  entry: path.resolve(__dirname, "app"),
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: "babel-loader"
         }
       },
       {
         test: /\.(scss|sass)$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           }, // creates style nodes from JS strings
           {
-            loader: 'css-loader'
+            loader: "css-loader"
           }, // translates CSS into CommonJS
           {
-            loader: 'sass-loader'
+            loader: "sass-loader"
           } // compiles Sass to CSS
         ]
       },
@@ -34,16 +56,45 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader'
+            loader: "css-loader"
           }
         ]
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/images/",
+              limit: 20000
+            }
+          }
+        ] // dynamic loading of imported images
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "assets/fonts/"
+            }
+          }
+        ] // dynamic loading of imported fonts
       }
     ]
   },
-  plugins: [
-    htmlPlugin
-  ]
+  plugins: [htmlPlugin, copyPlugin],
+  resolve: {
+    modules: [path.resolve("./app"), path.resolve("./node_modules")]
+  }, // Path resolver to make relative imports available (assets/images instead of ../assets/images)
+  devServer: {
+    port: 8003
+  } // Port webpack serves to
 }
