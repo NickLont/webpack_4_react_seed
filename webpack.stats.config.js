@@ -1,3 +1,4 @@
+// extra webpack config to provide build stats
 const config = require('./webpack.config')
 const path = require('path')
 const WebpackMonitor = require('webpack-monitor')
