@@ -4,7 +4,7 @@ import "./assets/sass/style.scss"
 
 class App extends Component {
   render() {
-    return <p className="index-page__title">React index page</p >
+    return <p className="index-page__title">React index page</p>
   }
 }
 
