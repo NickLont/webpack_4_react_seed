@@ -1,4 +1,6 @@
 const path = require("path")
+const dotenv = require("dotenv-webpack")
+const dotenvPlugin = new dotenv()
 const htmlWebPackPlugin = require("html-webpack-plugin")
 const htmlPlugin = new htmlWebPackPlugin({
   template: path.resolve(__dirname, "app/index.html"), // Location of source index.html
@@ -23,7 +25,7 @@ const copyPlugin = new copyWebpackPlugin(
   {}
 ) // Manual copy of assets to avoid importing in evey component (not optimal for Webpack)
 
-module.exports = {
+const webpackConfig = {
   entry: path.resolve(__dirname, "app"),
   output: {
     filename: "main.js",
@@ -90,7 +92,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlPlugin, copyPlugin],
+  plugins: [htmlPlugin, copyPlugin, dotenvPlugin],
   resolve: {
     modules: [path.resolve("./app"), path.resolve("./node_modules")]
   }, // Path resolver to make relative imports available (assets/images instead of ../assets/images)
@@ -98,3 +100,5 @@ module.exports = {
     port: 8003
   } // Port webpack serves to
 }
+
+module.exports = webpackConfig
