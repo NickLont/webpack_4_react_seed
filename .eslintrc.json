@@ -16,6 +16,7 @@
     }],
     "semi": ["error", "never"],
     "no-console": "warn",
-    "indent": "warn"
+    "indent": "warn",
+    "comma-dangle": "warn"
   }
 }
