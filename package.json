@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development && webpack-dev-server --mode=development --open --hot --color --watch",
+    "start": "webpack --mode=development && webpack-dev-server --mode=development --hot --color --watch",
     "build": "webpack --mode=production --progress",
     "build:stats": "webpack --config=webpack.stats.config.js --env --mode=production --progress --profile",
     "precommit": "lint-staged"
@@ -60,6 +60,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint-config-standard": "^11.0.0",
+    "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",

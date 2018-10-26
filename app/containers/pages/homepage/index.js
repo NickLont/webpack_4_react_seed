@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import Button from "react-bootstrap/lib/Button"
 
-class Index extends Component {
+class Homepage extends Component {
   render() {
-    console.log("env is:", process.env)
+    // console.log("env is:", process.env)
     return (
       <div className="container homepage">
         <h3 className="homepage__title">App Homepage</h3>
@@ -13,4 +13,4 @@ class Index extends Component {
   }
 }
 
-export default Index
+export default Homepage
