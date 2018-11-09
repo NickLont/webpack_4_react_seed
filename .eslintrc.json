@@ -17,6 +17,7 @@
     "semi": ["error", "never"],
     "no-console": "warn",
     "indent": "warn",
-    "comma-dangle": "warn"
+    "comma-dangle": "warn",
+    "object-curly-spacing": ["warn", "always"]
   }
 }
