@@ -46,6 +46,8 @@ const webpackConfig = {
           // creates style nodes from JS strings
           "css-loader",
           // translates CSS into CommonJS
+          "postcss-loader",
+          // uses plugins defined in postcss.config.js , most important is autoprefixer
           "sass-loader"
           // compiles Sass to CSS
           // these loader arrays work bottom to top
@@ -53,7 +55,7 @@ const webpackConfig = {
       },
       {
         test: /\.css$/,
-        loaders: ["style-loader", "css-loader"]
+        loaders: ["style-loader", "postcss-loader", "css-loader"]
       },
       {
         test: /\.(png|jp(e*)g|svg)$/,
