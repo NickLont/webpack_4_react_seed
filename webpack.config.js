@@ -4,7 +4,8 @@ const dotenvPlugin = new dotenv()
 const htmlWebPackPlugin = require("html-webpack-plugin")
 const htmlPlugin = new htmlWebPackPlugin({
   template: path.resolve(__dirname, "app/index.html"), // Location of source index.html
-  filename: "index.html" // Name of produced index.html
+  filename: "index.html", // Name of produced index.html,
+  chunksSortMode: "dependency" //Allows to control how chunks should be sorted before they are included to the html
 })
 const copyWebpackPlugin = require("copy-webpack-plugin")
 const copyPlugin = new copyWebpackPlugin(
@@ -47,6 +48,7 @@ const webpackConfig = {
           // translates CSS into CommonJS
           "sass-loader"
           // compiles Sass to CSS
+          // these loader arrays work bottom to top
         ]
       },
       {
