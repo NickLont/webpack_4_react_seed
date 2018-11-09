@@ -40,28 +40,18 @@ const webpackConfig = {
       },
       {
         test: /\.(scss|sass)$/,
-        use: [
-          {
-            loader: "style-loader"
-          }, // creates style nodes from JS strings
-          {
-            loader: "css-loader"
-          }, // translates CSS into CommonJS
-          {
-            loader: "sass-loader"
-          } // compiles Sass to CSS
+        loaders: [
+          "style-loader",
+          // creates style nodes from JS strings
+          "css-loader",
+          // translates CSS into CommonJS
+          "sass-loader"
+          // compiles Sass to CSS
         ]
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
-          }
-        ]
+        loaders: ["style-loader", "css-loader"]
       },
       {
         test: /\.(png|jp(e*)g|svg)$/,
