@@ -1,4 +1,5 @@
 const merge = require("webpack-merge")
+const path = require("path")
 
 const devConfig = require("./webpack.dev.config")
 
@@ -9,6 +10,7 @@ const uglifyWebpackPlugin = require("uglifyjs-webpack-plugin")
 // Custom uglify rules, enabling sourceMap and removing console.logs & errors
 const uglifyWebpack = new uglifyWebpackPlugin({
   sourceMap: true,
+  parallel: true,
   uglifyOptions: {
     compress: {
       drop_console: true
@@ -18,6 +20,10 @@ const uglifyWebpack = new uglifyWebpackPlugin({
 
 const webpackProdConfig = merge(devConfig, {
   mode: "production",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[chunkhash].js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
+  },
   optimization: {
     minimizer: [uglifyWebpack],
     // runtimeChunk: true adds an extra chunk to each entrypoint containing only the runtime. Here we are not interested in that, so we simply turned it off.

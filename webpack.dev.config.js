@@ -34,7 +34,7 @@ const webpackDevConfig = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
+    filename: "main.js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
   },
   module: {
     rules: [
