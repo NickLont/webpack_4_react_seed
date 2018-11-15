@@ -26,11 +26,15 @@ const copyPlugin = new copyWebpackPlugin(
   {}
 ) // Manual copy of assets to avoid importing in evey component (not optimal for Webpack)
 
-const webpackConfig = {
-  entry: path.resolve(__dirname, "app"),
+const webpackDevConfig = {
+  mode: "development",
+  entry: {
+    // We are telling webpack that we would like separate dependency graphs for each file here
+    main: path.resolve(__dirname, "app") // optimally, there should be 1 file for each page of the app
+  },
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[chunkhash].js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
   },
   module: {
     rules: [
@@ -93,4 +97,4 @@ const webpackConfig = {
   } // Port webpack serves to
 }
 
-module.exports = webpackConfig
+module.exports = webpackDevConfig
