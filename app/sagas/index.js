@@ -1,21 +1,9 @@
-import { call, put, takeEvery, takeLatest, all } from "redux-saga/effects"
-
-function* exampleSaga() {
-  try {
-    yield put({ type: 'INCREMENT' })
-    yield console.log("success")
-  } catch (e) {
-    yield console.log("error")
-  }
-}
-
-function* sagaWatcher() {
-  yield takeEvery("EXAMPLE_ACTION", exampleSaga)
-}
+import { all, fork } from "redux-saga/effects"
+import { userSagaWatcher } from './user'
 
 // single entry point to start all Sagas at once
-export default function* rootSaga() {
+export function* rootSaga() {
   yield all([
-    sagaWatcher()
+    fork(userSagaWatcher)
   ])
 }

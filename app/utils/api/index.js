@@ -1,5 +1,5 @@
-import axios from './axios'
+import * as User from './user'
 
-export const fetchUser = () => {
-  axios.get('/user')
+export {
+  User
 }

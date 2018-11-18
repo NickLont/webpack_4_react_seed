@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Provider } from 'react-redux'
+import configureStore from './store'
 import ReactDOM from "react-dom"
 import "assets/sass/style.scss"
 import Homepage from "containers/pages/homepage"
@@ -8,5 +10,12 @@ class App extends Component {
     return <Homepage />
   }
 }
+const store = configureStore()
+console.log(store.getState())
 
-ReactDOM.render(<App />, document.getElementById("app"))
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
+)

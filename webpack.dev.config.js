@@ -30,7 +30,11 @@ const webpackDevConfig = {
   mode: "development",
   entry: {
     // We are telling webpack that we would like separate dependency graphs for each file here
-    main: path.resolve(__dirname, "app") // optimally, there should be 1 file for each page of the app
+    // optimally, there should be 1 file for each page of the app
+    main: [
+      '@babel/polyfill', // polyfill for Webpack 4 to use regenerators, Object.assign etc
+      path.resolve(__dirname, "app")
+    ]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
