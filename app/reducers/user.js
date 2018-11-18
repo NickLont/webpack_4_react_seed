@@ -1,28 +1,28 @@
 const initialState  = {
-  fetching: false,
+  loading: false,
   error: null,
-  user: null
+  data: null
 }
 
 export default function UserReducer(state = initialState, action) {
   switch (action.type) {
-    case 'API_CALL_REQUEST' :
+    case 'FETCH_USER_REQUEST' :
       return {
-        fetching: true,
+        loading: true,
         error: null,
-        user: null
+        data: null
       }
-    case 'API_CALL_SUCCESS' :
+    case 'FETCH_USER_SUCCESS' :
       return {
-        fetching: false,
+        loading: false,
         error: null,
-        user: action.data
+        data: action.data
       }
-    case 'API_CALL_FAILURE' :
+    case 'FETCH_USER_FAILURE' :
       return {
-        fetching: false,
+        loading: false,
         error: action.error,
-        user: null
+        data: null
       }
     default:
       return state

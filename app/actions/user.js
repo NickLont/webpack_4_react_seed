@@ -1,15 +1,15 @@
 // action creators returning action objects
 const fetchUserRequest = () => {
-  return { type: 'API_CALL_REQUEST' }
+  return { type: 'FETCH_USER_REQUEST' }
 }
 const fetchUserSuccess = (data) => {
-  return { type: 'API_CALL_SUCCESS', data }
+  return { type: 'FETCH_USER_SUCCESS', data }
 }
 const fetchUserFailure = (error) => {
-  return { type: 'API_CALL_FAILURE', error }
+  return { type: 'FETCH_USER_FAILURE', error }
 }
-const fetchUser = () => {
-  return { type: 'FETCH_USER' }
+const fetchUser = (user) => {
+  return { type: 'FETCH_USER', data: user }
 }
 
 export {

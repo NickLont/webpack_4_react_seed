@@ -11,7 +11,6 @@ class App extends Component {
   }
 }
 const store = configureStore()
-console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>
