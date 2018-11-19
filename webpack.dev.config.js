@@ -45,19 +45,27 @@ const webpackDevConfig = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: [
+          { loader: "babel-loader" },
+          { loader: "eslint-loader" }
+        ]
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
       },
       {
         test: /\.(scss|sass)$/,
         loaders: [
-          "style-loader",
-          // creates style nodes from JS strings
-          "css-loader",
-          // translates CSS into CommonJS
-          "postcss-loader",
-          // uses plugins defined in postcss.config.js , most important is autoprefixer
-          "sass-loader"
-          // compiles Sass to CSS
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "postcss-loader", // uses plugins defined in postcss.config.js , most important is autoprefixer
+          "sass-loader" // compiles Sass to CSS
           // these loader arrays work bottom to top
         ]
       },

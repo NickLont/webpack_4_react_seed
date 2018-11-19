@@ -4,29 +4,37 @@ import { TestComponent } from "components"
 import { connect } from 'react-redux'
 import { UserActions } from 'actions'
 import { PropTypes } from 'prop-types'
+import { UserSelector } from 'selectors'
 
 class Homepage extends Component {
-  render() {
-    const { user } = this.props
-    // console.log("env is:", process.env)
+  onClick = () => {
+    const { user, error, fetchUser } = this.props
+    fetchUser('Nick')
     console.log('user: ', user)
+    console.log('error: ', error)
+  }
+
+  render() {
+    // console.log("env is:", process.env)
     return (
       <div className="container homepage">
         <h3 className="homepage__title">App Homepage</h3>
         <TestComponent />
-        <Button onClick={this.props.fetchUser}>Bootstrap Button</Button>
+        <Button onClick={this.onClick}>Bootstrap Button</Button>
       </div>
     )
   }
 }
 Homepage.propTypes = {
   user: PropTypes.object,
+  error: PropTypes.object,
   fetchUser: PropTypes.func
 }
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: UserSelector.getUser(state),
+    userError: UserSelector.getUserError(state)
   }
 }
 const mapDispatchToProps = dispatch => ({

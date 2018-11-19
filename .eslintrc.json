@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",  // necessary to use experimental features not supported in ESLint itself yet
   "extends": [
     "standard",
     "eslint:recommended",
@@ -14,10 +15,12 @@
       "afterOpening": "never",
       "beforeClosing": "never"
     }],
+    "strict": 0,
     "semi": ["error", "never"],
     "no-console": 0,
     "indent": "warn",
     "comma-dangle": "warn",
-    "object-curly-spacing": ["warn", "always"]
+    "object-curly-spacing": ["warn", "always"],
+    "react/prop-types": ["warn"]
   }
 }

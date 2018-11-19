@@ -1,4 +1,5 @@
 // action creators returning action objects
+// TODO action creators should possibly also return Immutable objects to enforce paradigm everywhere
 const fetchUserRequest = () => {
   return { type: 'FETCH_USER_REQUEST' }
 }
