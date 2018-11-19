@@ -8,7 +8,7 @@ import { PropTypes } from 'prop-types'
 class Homepage extends Component {
   render() {
     const { user } = this.props
-    console.log("env is:", process.env)
+    // console.log("env is:", process.env)
     console.log('user: ', user)
     return (
       <div className="container homepage">

@@ -4,6 +4,8 @@ import { rootSaga } from 'sagas/index'
 import rootReducer   from 'reducers/rootReducer'
 
 // Store
+
+// redux dev tools enable
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default function configureStore() {
