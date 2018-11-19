@@ -22,7 +22,7 @@ const webpackProdConfig = merge(devConfig, {
   mode: "production",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
+    filename: "[name].[chunkhash].js" // filenames are generated at runtime. It invalidates the bundle when value for any chunk changes. Helps with caching
   },
   optimization: {
     minimizer: [uglifyWebpack],

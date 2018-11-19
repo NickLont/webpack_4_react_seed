@@ -36,10 +36,12 @@ const webpackDevConfig = {
       path.resolve(__dirname, "app")
     ]
   },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js" // When a new release goes out, the client will fetch the updated files while still using the cached version of the files that haven’t changed.
-  },
+  // we can produce an output bundle but this is optional since we use webpack-dev-server
+  // on development  that handles files in-memory
+  // output: {
+  //   path: path.resolve(__dirname, "dist"),
+  //   filename: "main.js"
+  // },
   module: {
     rules: [
       {
