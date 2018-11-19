@@ -7,8 +7,8 @@ function* fetchUser(user) {
   try {
     yield put(UserActions.fetchUserRequest())
     // (user) is the object returned from fetchUser action creator, so it is { type: 'FETCH_USER', data: user }
-    const data = yield call(Api.User.fetchUser, fromJS(user.data))
-    yield put(UserActions.fetchUserSuccess(data))
+    const data = yield call(Api.User.fetchUser, user.data)
+    yield put(UserActions.fetchUserSuccess(fromJS(data))) // Turning data abject to Immutable Map, example purposes
   } catch (error) {
     yield put(UserActions.fetchUserFailure(error.message || error))
   }
