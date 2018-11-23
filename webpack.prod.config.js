@@ -25,6 +25,7 @@ const webpackProdConfig = merge(devConfig, {
     filename: "[name].[chunkhash].js" // filenames are generated at runtime. It invalidates the bundle when value for any chunk changes. Helps with caching
   },
   optimization: {
+    minimize: true,
     minimizer: [uglifyWebpack],
     // runtimeChunk: true adds an extra chunk to each entrypoint containing only the runtime. Here we are not interested in that, so we simply turned it off.
     runtimeChunk: false,

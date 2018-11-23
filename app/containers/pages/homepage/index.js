@@ -23,6 +23,9 @@ class Homepage extends Component {
         <p>error: {error ?  error : 'No error'}</p>
         <p>loading: {JSON.stringify(loading)}</p>
         <TestComponent />
+        <>
+          <p>Test</p>
+        </>
         <Button onClick={this.onClick}>Bootstrap Button</Button>
       </div>
     )

@@ -7,24 +7,24 @@ const htmlPlugin = new htmlWebPackPlugin({
   filename: "index.html", // Name of produced index.html,
   chunksSortMode: "dependency" //Allows to control how chunks should be sorted before they are included to the html
 })
-const copyWebpackPlugin = require("copy-webpack-plugin")
-const copyPlugin = new copyWebpackPlugin(
-  [
-    {
-      from: path.resolve(__dirname, "app/assets/images/"),
-      to: path.resolve(__dirname, "dist/assets/images/")
-    },
-    {
-      from: path.resolve(__dirname, "app/assets/fonts"),
-      to: path.resolve(__dirname, "dist/assets/fonts")
-    },
-    {
-      from: path.resolve(__dirname, "app/assets/various"),
-      to: path.resolve(__dirname, "dist/assets/various")
-    }
-  ],
-  {}
-) // Manual copy of assets to avoid importing in evey component (not optimal for Webpack)
+// const copyWebpackPlugin = require("copy-webpack-plugin")
+// const copyPlugin = new copyWebpackPlugin(
+//   [
+//     {
+//       from: path.resolve(__dirname, "app/assets/images/"),
+//       to: path.resolve(__dirname, "dist/assets/images/")
+//     },
+//     {
+//       from: path.resolve(__dirname, "app/assets/fonts"),
+//       to: path.resolve(__dirname, "dist/assets/fonts")
+//     },
+//     {
+//       from: path.resolve(__dirname, "app/assets/various"),
+//       to: path.resolve(__dirname, "dist/assets/various")
+//     }
+//   ],
+//   {}
+// )  Manual copy of assets to avoid importing in evey component (not optimal for Webpack)
 
 const webpackDevConfig = {
   mode: "development",
@@ -36,7 +36,7 @@ const webpackDevConfig = {
       path.resolve(__dirname, "app")
     ]
   },
-  // we can produce an output bundle but this is optional since we use webpack-dev-server
+  // we can produce a custom output bundle but this is optional since we use webpack-dev-server
   // on development  that handles files in-memory
   // output: {
   //   path: path.resolve(__dirname, "dist"),
@@ -76,17 +76,38 @@ const webpackDevConfig = {
         loaders: ["style-loader", "postcss-loader", "css-loader"]
       },
       {
-        test: /\.(png|jp(e*)g|svg)$/,
+        test: /\.(png|jp(e*)g)$/,
+        loader: 'image-webpack-loader',
+        enforce: 'pre'
+      },
+      {
+        test: /\.(png|jp(e*)g)$/,
         use: [
           {
             loader: "url-loader",
             options: {
               name: "[name].[ext]",
               outputPath: "assets/images/",
-              limit: 20000
+              limit: 10 * 1024
+              // inlining files below 10kB
+              // → If image.png is smaller than 10 kB, `imageUrl` will include
+              // the encoded image: 'data:image/png;base64,iVBORw0KGg…'
+              // → If image.png is larger than 10 kB, the loader will create a new file,
+              // and `imageUrl` will include its url: `/2fcd56a1920be.png`
             }
           }
         ] // dynamic loading of imported images
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-url-loader',
+        options: {
+          limit: 10 * 1024,
+          // Remove the quotes from the url
+          // (they’re unnecessary in most cases)
+          noquotes: true
+          // svg-url-loader works like url-loader – except it encodes files with the URL encoding. T  his is more size-effective
+        }
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -102,7 +123,11 @@ const webpackDevConfig = {
       }
     ]
   },
-  plugins: [htmlPlugin, copyPlugin, dotenvPlugin],
+  plugins: [
+    htmlPlugin,
+    // copyPlugin,
+    dotenvPlugin
+  ],
   resolve: {
     modules: [path.resolve("./app"), path.resolve("./node_modules")]
   }, // Path resolver to make relative imports available (assets/images instead of ../assets/images)
