@@ -91,7 +91,7 @@ const webpackDevConfig = {
               limit: 10 * 1024
               // inlining files below 10kB
               // → If image.png is smaller than 10 kB, `imageUrl` will include
-              // the encoded image: 'data:image/png;base64,iVBORw0KGg…'
+              // the encoded base64 image: 'data:image/png;base64,iVBORw0KGg…'
               // → If image.png is larger than 10 kB, the loader will create a new file,
               // and `imageUrl` will include its url: `/2fcd56a1920be.png`
             }
