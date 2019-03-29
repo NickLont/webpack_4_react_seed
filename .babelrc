@@ -3,7 +3,7 @@
     ["@babel/preset-env",{
       "targets": {
         "node": 10,
-        "browsers": ">5%"
+        "browsers": ">1%"
       },
       "debug": false,
       "useBuiltIns": false
