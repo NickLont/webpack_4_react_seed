@@ -12,10 +12,14 @@ const fetchUserFailure = (error) => {
 const fetchUser = (user) => {
   return { type: 'FETCH_USER', data: user }
 }
+const logoutUser = () => {
+  return { type: 'LOGOUT_USER' }
+}
 
 export {
   fetchUserFailure,
   fetchUserRequest,
   fetchUserSuccess,
-  fetchUser
+  fetchUser,
+  logoutUser
 }
