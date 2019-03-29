@@ -3,7 +3,7 @@ import Button from "react-bootstrap/lib/Button"
 import { TestComponent } from "components"
 import { connect } from 'react-redux'
 import { UserActions } from 'actions'
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { UserSelector } from 'selectors'
 
@@ -14,7 +14,6 @@ class Homepage extends Component {
   }
 
   render() {
-    // console.log("env is:", process.env)
     const { user, error, loading } = this.props
     return (
       <div className="container homepage">

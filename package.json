@@ -2,6 +2,8 @@
   "name": "react_seed_project",
   "version": "1.0.0",
   "description": "React seed project",
+  "author": "Nick Lontorfos",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -29,8 +31,6 @@
     "react",
     "seed"
   ],
-  "author": "Nick Lontorfos",
-  "license": "MIT",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
