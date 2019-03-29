@@ -21,6 +21,8 @@
     "indent": "warn",
     "comma-dangle": "warn",
     "object-curly-spacing": ["warn", "always"],
-    "react/prop-types": ["warn"]
+    "react/prop-types": ["warn"],
+    "no-unused-vars": "warn",
+    "react/jsx-no-comment-textnodes": "warn"
   }
 }

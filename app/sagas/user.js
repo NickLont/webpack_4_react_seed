@@ -2,6 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects"
 import { UserActions } from 'actions'
 import * as Api from 'utils/api'
 import { fromJS } from 'immutable'
+// import history from 'historyConfig'
 
 function* fetchUser(user) {
   try {
@@ -13,7 +14,14 @@ function* fetchUser(user) {
     yield put(UserActions.fetchUserFailure(error.message || error))
   }
 }
+function* logoutUser () {
+  yield console.log('user logged out')
+
+  // This is how we can navigate outside Components using the history object
+  // yield call(history.push, '/somePage')
+}
 
 export function* userSagaWatcher() {
   yield takeLatest("FETCH_USER", fetchUser)
+  yield takeLatest("LOGOUT_USER", logoutUser)
 }

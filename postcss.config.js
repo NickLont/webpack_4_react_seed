@@ -1,8 +1,12 @@
+const postcssNormalize =  require('postcss-normalize')
+const postcssPresetEnv =  require('postcss-preset-env')
+
 module.exports = {
   plugins: {
-    autoprefixer: {},
     cssnano: {},
     "postcss-import": {},
-    "postcss-cssnext": {}
+    "postcss-cssnext": {},
+    "postcss-normalize": postcssNormalize(), // normalise - CSS reset
+    "postcss-preset-env": postcssPresetEnv()
   }
 }
