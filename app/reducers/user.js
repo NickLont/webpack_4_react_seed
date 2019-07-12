@@ -16,7 +16,7 @@ const UserReducer = (state = initialState, action) => {
     return state.set('loading', false).set('error', action.error)
   default:
     return state
-    
+
   }
 }
 
