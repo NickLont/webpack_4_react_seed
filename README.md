@@ -7,13 +7,14 @@ It is heavily opinionated based on the Standard style for ESLint & Prettier.
 - React 16
 - Webpack 4 with hmr and [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 - Local [Css](https://github.com/webpack-contrib/css-loader#local-scope) / [Sass](https://github.com/webpack-contrib/sass-loader) loaders
-- Basic flux / Redux structure (WIP)
+- Basic Redux structure example with [Redux Sagas](https://github.com/redux-saga/redux-saga), [reselect](https://github.com/reduxjs/reselect), [immutable-js](https://github.com/immutable-js/immutable-js)
 - Pre-commit hooks with [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-staged)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
 - Relative and absolute imports (`import Homepage from "containers/pages/homepage"
 ` or `import Homepage from "./containers/pages/homepage"
 `)
 - Build statistics with [webpack-monitor](https://github.com/webpackmonitor/webpackmonitor) and [webpack-bundle-size-analyzer](https://github.com/robertknight/webpack-bundle-size-analyzer)
+- Now supporting [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 
 ## Getting started
 

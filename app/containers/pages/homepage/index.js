@@ -8,6 +8,13 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import { UserSelector } from 'selectors'
 
 class Homepage extends Component {
+  static propTypes = {
+    user: ImmutablePropTypes.map,
+    error: PropTypes.string,
+    loading: PropTypes.bool,
+    fetchUser: PropTypes.func
+  }
+
   onClick = () => {
     const { fetchUser } = this.props
     fetchUser('Nick')
@@ -21,20 +28,16 @@ class Homepage extends Component {
         <p>user: {user ? user : 'No user'}</p>
         <p>error: {error ?  error : 'No error'}</p>
         <p>loading: {JSON.stringify(loading)}</p>
-        <TestComponent />
+        <TestComponent
+          error={error}
+        />
+        {/*React.Fragment short-notation*/}
         <>
-          <p>Test</p>
+          <Button onClick={this.onClick}>Bootstrap Button</Button>
         </>
-        <Button onClick={this.onClick}>Bootstrap Button</Button>
       </div>
     )
   }
-}
-Homepage.propTypes = {
-  user: ImmutablePropTypes.map,
-  error: PropTypes.string,
-  loading: PropTypes.bool,
-  fetchUser: PropTypes.func
 }
 
 const mapStateToProps = state => {
