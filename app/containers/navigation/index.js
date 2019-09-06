@@ -53,7 +53,7 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: UserSelector.getUser(state)
+  user: UserSelector.getUserData(state)
 })
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(UserActions.logoutUser())

@@ -42,7 +42,7 @@ class Homepage extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: UserSelector.getUser(state),
+    user: UserSelector.getUserData(state),
     error: UserSelector.getUserError(state),
     loading: UserSelector.getUserLoading(state)
   }

@@ -12,7 +12,7 @@ export const getUserError = createSelector(
   getUserFromStore,
   (user) => user.get('error')
 )
-export const getUser = createSelector(
+export const getUserData = createSelector(
   getUserFromStore,
   (user) => user.get('data')
 )

@@ -14,6 +14,8 @@ const UserReducer = (state = initialState, action) => {
     return state.set('loading', false).set('data', action.data)
   case 'FETCH_USER_FAILURE' :
     return state.set('loading', false).set('error', action.error)
+  case 'LOGOUT_USER' :
+    return state.set('loading', false).set('error', null).set('data', null)
   default:
     return state
   }
